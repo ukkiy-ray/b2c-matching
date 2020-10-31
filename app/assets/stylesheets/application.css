@@ -1,0 +1,383 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ * {
+  box-sizing: border-box;
+ }
+
+/* ヘッダー======================= */
+
+header {
+  background-color: rgba(0, 0,  17, 0.7);    /* rgbは 0, 0, 68と迷い中 */
+  height: 90px;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+}
+
+.form-header {
+  background-color: rgba(0, 0,  17, 0.7);
+  height: 90px;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+}
+
+.apps-header {
+  background-color: rgba(0, 0,  17, 0.6);
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+}
+
+.top-wrapper {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.apps-wrapper {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.header-left {
+  font-size: 40px;
+  margin: 10px 20px;
+  text-align: center;
+}
+
+.header-logo {
+  text-decoration: none;
+  color: lightgray;
+}
+
+.header-right {
+  margin: 10px 20px;
+  width: 400px;
+}
+
+.nav {
+  display: flex;
+  font-size: 20px;
+}
+
+.sign-in {
+  text-decoration: none;
+  color: lightgray;
+}
+
+.sign-up {
+  text-decoration: none;
+  color: lightgray;
+  margin-left: 20px;
+}
+
+.sign-out {
+  text-decoration: none;
+  color: lightgray;
+  margin-left: 20px;
+}
+
+.hello {
+  text-decoration: none;
+  color: lightgray;
+}
+
+.company-sign-up {
+  text-decoration: none;
+  color: lightgray;
+  margin-left: 20px;
+}
+
+/* ここまでヘッダー================== */
+/* ここからトップページのコンテンツ =========*/
+.contents-wrapper {
+  background-image: url("images/Live.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.contents-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.context {
+  position: absolute;
+  text-align: center;
+}
+
+.catch-copy {
+  width: 100%;
+  color: white;
+  font-size: 60px;
+  z-index: 1;
+  margin-top: 200px;
+  margin-bottom: 50px;
+}
+
+.detail {
+  color: white;
+  margin-top: 40px;
+  font-size: 20px;
+}
+/* ここまでトップページのコンテンツ =========*/
+
+
+
+/* フッター==================================*/
+.footer {
+  background-color: rgba(17, 17,  17, 0.7);
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  z-index: 10;
+}
+
+.my-name {
+  color: lightgray;
+  text-align: center;
+  line-height: 50px;
+}
+
+/* form=============================== */
+
+.main {
+  padding-top: 90px;
+  background-image: url("images/Live.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: calc(100% - 90px);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.inner {
+  width: 100%;
+  margin: 0 auto;
+  padding: 25px 0 75px 0;
+  display: flex;
+  justify-content: center;
+  border: none;
+}
+
+.form__wrapper {
+  min-height: calc(100vh - 161vh);
+  height: 100%;
+  width: 60%;
+  margin: 0 80px;
+  background-color: rgba(238,238,238,0.4);
+  z-index: 10;
+}
+
+.page-heading {
+  font-size: 30px;
+  font-family: cursive;
+  color: #0000ff;
+  margin-bottom: 20px;
+}
+
+.field {
+  margin: 10px auto;
+}
+
+.input {
+  margin-top: 5px;
+  display: inline-block;
+  width: 40%;
+  height: 28px;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 17);
+  background: none;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0 5px;
+}
+
+.send {
+  margin-top: 5px;
+  color: white;
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  background-color: #0000bb;
+  border: none;
+  border-radius: 10px;
+}
+
+.staff {
+  display: flex;
+  justify-content: center;
+}
+
+.kana {
+  width: 100%;
+}
+
+.logged-in-main {
+  padding-top: 120px;
+  background-image: url("images/Live.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.logged-in-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.sign-in-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+.sign-in-form {
+  min-height: calc(100vh - 161vh);
+  height: 85%;
+  width: 60%;
+  margin: 0 80px;
+  background-color: rgba(238,238,238,0.4);
+  z-index: 10;
+}
+
+.sign-in-heading {
+  font-size: 40px;
+  font-family: cursive;
+  color: #0000ff;
+  margin-top: 40px;
+  margin-bottom: 75px;
+}
+
+.sns-logged-in {
+  display: flex;
+  justify-content: center;
+  height: 45%;
+  padding-top: 15px;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  height: 40px;
+  border-radius: 10px;
+  padding: 4px;
+  margin: 30px;
+}
+
+.form-footer {
+  background-color: rgba(17, 17, 17, 0.7);
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  z-index: 10;
+}
+
+/* ================== ここまで user_form ================== */
+
+.mein-container {
+  background-image: url("images/Live.png");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+}
+
+.mein-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.content-title {
+  width: 100%;
+  margin: 90px auto;
+  position: absolute;
+  font-size: 40px;
+  color: white;
+}
+
+.index-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 190px;
+  position: absolute;
+}
+
+.user-info {
+  float: left;
+  max-width: 200px;
+  width: 25%;
+  height: 200px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 100px;
+}
