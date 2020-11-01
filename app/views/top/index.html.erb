@@ -5,17 +5,38 @@
     </div>
       <div class="header-right">
         <ul class="nav">
-          <li><%= link_to 'ログイン', "#", class: "sign-in" %></li>
-          <li><%= link_to '新規登録', "#", class: "sign-up" %></li>
-          <li><%= link_to '法人の方はこちら', "#", class: "company-sign-up" %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "こんにちは、#{current_user.nickname}さん", "#", class: "hello" %></li>
+            <li><%= link_to 'ユーザーログアウト', destroy_user_session_path, method: :delete, class: "sign-out" %></li>
+          <% elsif company_signed_in? %>
+            <li><%= link_to "こんにちは、#{current_company.company_name}様", "#", class: "hello" %></li>
+            <li><%= link_to '法人ログアウト', destroy_company_session_path, method: :delete, class: "sign-out" %></li>
+          <% else %>
+            <li><%= link_to 'ユーザーログイン', new_user_session_path, class: "sign-in" %></li>
+            <li><%= link_to '法人の方ログイン', new_company_session_path, class: "sign-up" %></li>
+            <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+            <li><%= link_to '法人の方はこちら', new_company_registration_path, class: "company-sign-up" %></li>
+          <% end %>
         </ul>
       </div>
   </div>
 </header>
 <div style="background-image:url(/images/Live.png)" class="contents-wrapper">
     <div class="context">
-      <div class="catch-copy">あなたの夢は、ここから始まる。</div>
-      <p class="detail">歌うことが好き。将来は歌声をたくさんの人に届けたいけど、<br>仕事にするのはちょっぴり不安。そんな悩みを抱えていませんか。<br><br>毎回のオーデションにかかるコストを削減しつつ、<br>将来性のある人材が欲しい。そんな課題を抱えていませんか。<br><br>このアプリはユーザー様、法人様双方の課題を<br>BtoCによるマッチングシステムで解決し、<br>エンターテイメント業界のさらなる発展に貢献いたします。</p>
+      <% if user_signed_in? %>
+        <h2>企業一覧</h2>
+        <% @companies.each do |company| %>
+          <%= company.company_name %>
+        <% end %>
+      <% elsif company_signed_in? %>
+        <h2>ユーザー一覧</h2>
+        <% @users.each do |user| %>
+          <%= user.nickname %>
+        <% end %>
+      <% else %>
+        <div class="catch-copy">あなたの夢は、ここから始まる。</div>
+        <p class="detail">歌うことが好き。将来は歌声をたくさんの人に届けたいけど、<br>仕事にするのはちょっぴり不安。そんな悩みを抱えていませんか。<br><br>毎回のオーデションにかかるコストを削減しつつ、<br>将来性のある人材が欲しい。そんな課題を抱えていませんか。<br><br>このアプリはユーザー様、法人様双方の課題を<br>BtoCによるマッチングシステムで解決し、<br>エンターテイメント業界のさらなる発展に貢献いたします。</p>
+      <% end%>
     </div>
     <div class="footer">
       <div class="my-name">presented by Sho.</div>

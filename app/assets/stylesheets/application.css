@@ -257,6 +257,20 @@ header {
   width: 100%;
 }
 
+.profile {
+  margin-top: 5px;
+  display: inline-block;
+  width: 95%;
+  border-radius: 9px;
+  border: 1px solid #333333;
+  background: none;
+  padding: 0 5px;
+}
+
+.profile::placeholder {
+  color: black;
+}
+
 .logged-in-main {
   padding-top: 120px;
   background-image: url("images/Live.png");
