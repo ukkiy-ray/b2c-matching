@@ -7,7 +7,7 @@ class Company < ApplicationRecord
   with_options presence: true do
     validates :company_name
     validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "はハイフン無し10桁もしくは11桁の半角数字で入力してください"}
-    validates :office_url, format: {with: /\Ahttp(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/, message: "は正しく入力してください"}
+    validates :office_url, format: {with: /\A#{URI::regexp(%w(http https))}\z/, message: "は正しく入力してください"}
     validates :detail
   end
   
