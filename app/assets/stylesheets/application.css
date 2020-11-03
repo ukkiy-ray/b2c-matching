@@ -111,7 +111,6 @@ header {
 /* ここまでヘッダー================== */
 /* ここからトップページのコンテンツ =========*/
 .contents-wrapper {
-  background-image: url("images/Live.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -130,11 +129,15 @@ header {
   left: 0;
   bottom: 0;
   background-color: rgba(0,0,0,0.4);
+  height: 100%;
 }
 
 .context {
   position: absolute;
   text-align: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .catch-copy {
@@ -151,6 +154,61 @@ header {
   margin-top: 40px;
   font-size: 20px;
 }
+
+.index-container {
+  width: 100%;
+  height: 100%;
+  padding-top: 110px;
+  position: absolute;
+}
+
+.index-title {
+  font-size: 50px;
+  border-bottom: 2px solid darkgrey;
+  width: 40%;
+  font-weight: normal;
+  margin: 0 auto;
+  color: coral;
+}
+
+.user-info {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.index-contents {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.index-content {
+  width: 20%;
+  margin: 30px 25px;
+}
+
+.image {
+  width: 100%;
+  height: 70%;
+}
+
+.follow-link {
+  margin: 10px auto;
+  border-radius: 15px;
+  background-color: rgba(0, 51, 102, 0.8);
+  width: 50%;
+}
+
+.follow {
+  text-decoration: none;
+  color: aliceblue;
+  display: inline-block;
+  width: 100%;
+}
+
 /* ここまでトップページのコンテンツ =========*/
 
 
@@ -207,7 +265,7 @@ header {
 
 .form__wrapper {
   min-height: calc(100vh - 161vh);
-  height: 100%;
+  height: 101%;
   width: 60%;
   margin: 0 80px;
   background-color: rgba(238,238,238,0.4);
@@ -273,7 +331,6 @@ header {
 
 .logged-in-main {
   padding-top: 120px;
-  background-image: url("images/Live.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -298,7 +355,8 @@ header {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 5px;
+  padding-top: 30px;
+  position: absolute;
 }
 
 .sign-in-form {
@@ -345,10 +403,25 @@ header {
   z-index: 10;
 }
 
+.img-upload {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2vh 0;
+}
+
+.click-upload {
+  margin: 15px auto;
+  min-width: 250px;
+}
+
+.click-upload>p {
+  margin-bottom: 15px;
+}
+
 /* ================== ここまで user_form ================== */
 
 .mein-container {
-  background-image: url("images/Live.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -375,23 +448,3 @@ header {
   color: white;
 }
 
-.index-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 190px;
-  position: absolute;
-}
-
-.user-info {
-  float: left;
-  max-width: 200px;
-  width: 25%;
-  height: 200px;
-  margin: 10px;
-  background-color: white;
-  border-radius: 100px;
-}

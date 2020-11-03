@@ -4,6 +4,12 @@ class Company < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :image
+  has_many :users, through: :user_relations
+  has_many :user_relations
+  has_many :users, through: :company_relations, dependent: :destroy
+  has_many :company_relations, dependent: :destroy
+
   with_options presence: true do
     validates :company_name
     validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "はハイフン無し10桁もしくは11桁の半角数字で入力してください"}

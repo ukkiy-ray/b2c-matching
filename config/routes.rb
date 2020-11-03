@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   }
 
   root to: 'top#index'
+  resources :users, only: :show
+  resources :companies, only: :show
 end

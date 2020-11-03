@@ -33,7 +33,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :password %>
+          <%= f.label "パスワード" %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
@@ -41,7 +41,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label "パスワード確認" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
         </div>
 
@@ -53,6 +53,15 @@
         <div class="field">
           <%= f.label "プロフィール" %><br />
           <%= f.text_area :detail, class: "profile", placeholder: "1000文字まで入力できます", rows:"7" ,maxlength:"1000" %>
+        </div>
+
+        <div class="img-upload">
+          <div class="click-upload">
+          <p>
+            画像をアップロードしてください
+          </p>
+          <%= f.file_field :image, id:"item-image" %>
+          </div>
         </div>
 
         <div class="actions">

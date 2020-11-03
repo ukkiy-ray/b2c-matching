@@ -71,6 +71,15 @@
           <%= f.text_area :detail, class: "profile", placeholder: "1000文字まで入力できます", rows:"7" ,maxlength:"1000" %>
         </div>
 
+        <div class="img-upload">
+          <div class="click-upload">
+          <p>
+            会社のロゴをアップロードしてください
+          </p>
+          <%= f.file_field :image, id:"item-image" %>
+          </div>
+        </div>
+
         <div class="actions">
           <%= f.submit "Sign up", class: 'send' %>
         </div>
