@@ -5,10 +5,10 @@ class Company < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :image
+  has_many :user_relations, foreign_key: "company_id"
   has_many :users, through: :user_relations
-  has_many :user_relations
+  has_many :company_relations, foreign_key: "company_id", dependent: :destroy
   has_many :users, through: :company_relations, dependent: :destroy
-  has_many :company_relations, dependent: :destroy
 
   with_options presence: true do
     validates :company_name

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   }
 
   root to: 'top#index'
-  resources :users, only: :show
-  resources :companies, only: :show
+  resources :users, only: [:show] do
+    resources :company_relations, only: [:create, :destroy]
+  end
+  resources :companies, only: [:show] do
+    resources :user_relations, only: [:create, :destroy]
+  end
 end

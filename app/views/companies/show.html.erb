@@ -1,1 +1,90 @@
-<%= @company.company_name %>
+<header>
+  <div class="top-wrapper">
+    <div class="header-left">
+      <%= link_to 'Be ambitious', root_path, class: "header-logo" %>
+    </div>
+    <div class="header-right">
+      <ul class="nav">
+        <% if company_signed_in? && current_company.id == @company.id %>
+          <li><%= link_to "こんにちは、#{current_company.company_name}様", company_path(current_company.id), class: "hello" %></li>
+          <li><%= link_to 'ログアウト', destroy_company_session_path, method: :delete, class: "sign-out" %></li>
+        <% elsif user_signed_in? %>
+          <li><%= link_to "こんにちは、#{current_user.nickname}さん", user_path(current_user.id), class: "hello" %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign-out" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div style="background-image:url(/images/guitar.png)" class="detail-contents">
+  <div class="context">
+    <% if company_signed_in? && current_company.id == @company.id %>
+      <div class="detail-container">
+        <h1 class="cp_h1title">マイページ</h1>
+        <div class="information-wrapper">
+          <div class="profile-contents">
+            <div class="pro-image">
+              <p class="profile-detail">プロフィール画像</p>
+              <%= image_tag current_company.image, class: 'img' if current_company.image.attached? %>
+            </div>
+            <ul class="info-list">
+              <li><%= "Nickname: #{current_company.company_name}" %></li>
+              <li><%= "E-mail: #{current_company.email}" %></li>
+            </ul>
+            <ul class="info-list">
+              <li>URL: <%= link_to "#{@company.office_url}", @company.office_url, class: "office-url" %></li>
+            </ul>
+            <p class="profile-detail">Profile</p>
+            <div class="profile-text">
+              <%= current_company.detail %>
+            </div>
+            <%= link_to "編集する", edit_company_registration_path, class: "edit-profile" %>
+          </div>
+        </div>
+      <div>
+    <% elsif user_signed_in? %>
+      <div class="detail-container">
+        <h1 class="cp_h1title"><%= "#{@company.company_name}さんのプロフィール" %></h1>
+        <div class="information-wrapper">
+          <div class="profile-contents">
+            <div class="pro-image">
+              <p class="profile-detail">プロフィール画像</p>
+              <%= image_tag @company.image, class: 'img' if @company.image.attached? %>
+            </div>
+            <ul class="info-list">
+              <li><%= @company.company_name %></li>
+              <li><%= "E-mail: #{@company.email}" %></li>
+            </ul>
+            <ul class="info-list">
+              <li>URL: <%= link_to "#{@company.office_url}", @company.office_url, class: "office-url" %></li>
+            </ul>
+            <p class="profile-detail">Profile</p>
+            <div class="profile-text">
+              <%= @company.detail %>
+            </div>
+
+            <% if @user_relations.present? %>
+              <%= link_to 'フォローを外す', company_user_relation_path(@company.id), method: :delete, remote: true, class:'relation-destroy', id: "unfollow" %>
+              <% if @company_relations.present? %>
+                <div class="match">マッチングしました！</div>
+                <div class="arrow">↓↓↓↓↓↓↓↓</div>
+              <% end %>
+            <% else %>
+              <%#= link_to 'フォローする', company_user_relations_path(@company.id), method: :post, remote: true, class:'relation' %>
+              <%= form_with model: @user_relation, url: company_user_relations_path(@company.id), id: "form", local: true do |f| %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <%= f.hidden_field :company_id, :value => @company.id %>
+                <%= f.submit "フォローする", id: "btn" %>
+              <% end %>
+            <% end %>
+
+          </div>
+        </div>
+      <div>
+    <% end %>
+  </div>
+</div>
+<div class="footer">
+  <div class="my-name">presented by Sho.</div>
+</div>

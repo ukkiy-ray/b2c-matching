@@ -5,10 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :image
+  has_many :user_relations, foreign_key: "user_id", dependent: :destroy
   has_many :companies, through: :user_relations, dependent: :destroy
-  has_many :user_relations, dependent: :destroy
+  has_many :company_relations, foreign_key: "user_id"
   has_many :companies, through: :company_relations
-  has_many :company_relations
+  
 
   with_options presence: true do
     validates :nickname
