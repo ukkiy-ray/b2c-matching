@@ -68,6 +68,7 @@ header {
 .header-logo {
   text-decoration: none;
   color: lightgray;
+  font-family: 'Abril Fatface', cursive;
 }
 
 .header-right {
@@ -225,6 +226,7 @@ header {
 
 .my-name {
   color: lightgray;
+  font-family: 'Roboto Mono', monospace;
   text-align: center;
   line-height: 50px;
 }
@@ -565,11 +567,165 @@ header {
 }
 
 .match {
-  font-size: 35px;
+  font-size: 25px;
   color: red;
 }
 
 .arrow {
-  font-size: 20px;
+  font-size: 18px;
   color: red;
+}
+
+.follow-btn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #75A9FF;
+  color: white;
+  border: none;
+  height: 40px;
+  border-radius: 10px;
+  padding: 4px;
+  margin: 30px;
+}
+
+.unfollow-btn {
+  display: inline-block;
+  text-decoration: none;
+  line-height: 40px;
+  background-color: #0c2f68;
+  color: white;
+  border: none;
+  height: 40px;
+  border-radius: 10px;
+  padding: 0 2px;
+  margin: 30px;
+}
+
+/* ========== message ===================*/
+.message-header {
+  background-color: #2f3e51;
+  position: relative;
+}
+
+.message-wrapper {
+  background-color: #fafafa;
+  height: calc(100vh - 90px);
+  display: flex;
+}
+
+.message-side {
+  width: 15%;
+  height: 100%;
+  background-color: #072752;
+}
+
+.side-list {
+  color: white;
+  font-size: 16px;
+  width: 100%;
+  padding: 40px 20px;
+}
+
+.info-li {
+  margin-top: 25px;
+}
+
+.url {
+  text-decoration: none;
+  color: white;
+}
+
+.list-img {
+  width:  170px;
+  height: 170px;
+  border-radius: 50%;
+  background-position: left top;
+  display: inline-block;
+  margin: 40px 0 0 15px;
+}
+
+.message-field {
+  width: 85%;
+}
+
+.from {
+  font-size: 26px;
+  width: 100%;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.plese {
+  color: gray;
+  text-align: right;
+}
+
+.yet {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.message-index {
+  width: 80%;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.message-container {
+  width: 100%;
+  height: 40px;
+  border: 1px solid gray;
+  padding: 0 10px;
+  line-height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  text-decoration: none;
+}
+
+.message-footer {
+  background-color: rgba(17, 17,  17, 0.7);
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  z-index: 10;
+}
+
+.footer-name {
+  color: lightgray;
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+  width: 85%;
+  line-height: 50px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 2px;
+}
+
+.send-btn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #75A9FF;
+  color: white;
+  border: none;
+  height: 40px;
+  border-radius: 10px;
+  padding: 4px;
+  margin-top: 20px;
+}
+
+.show-message {
+  font-size: 20px;
+  margin: 10px 0 5px 0;
+}
+
+.cancel {
+  margin-top: 5px;
+  text-decoration: none;
+  color: gray;
 }

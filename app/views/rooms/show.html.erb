@@ -1,0 +1,89 @@
+<header class="message-header">
+  <div class="top-wrapper">
+    <div class="header-left">
+      <%= link_to 'Be ambitious', root_path, class: "header-logo" %>
+    </div>
+      <div class="header-right">
+        <ul class="nav">
+          <% if user_signed_in? %>
+            <li><%= link_to "こんにちは、#{current_user.nickname}さん", user_path(current_user.id), class: "hello" %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign-out" %></li>
+          <% elsif company_signed_in? %>
+            <li><%= link_to "こんにちは、#{current_company.company_name}様", company_path(current_company.id), class: "hello" %></li>
+            <li><%= link_to 'ログアウト', destroy_company_session_path, method: :delete, class: "sign-out" %></li>
+          <% else %>
+            <li><%= link_to 'ユーザーログイン', new_user_session_path, class: "sign-in" %></li>
+            <li><%= link_to '法人の方ログイン', new_company_session_path, class: "sign-up" %></li>
+            <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+            <li><%= link_to '法人の方はこちら', new_company_registration_path, class: "company-sign-up" %></li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+</header>
+
+<div class="message-wrapper">
+  <div class="message-side">
+    <% if user_signed_in? %>
+      <%= image_tag @company.image, class: 'list-img' if @company.image.attached? %>
+      <ul class="side-list"><%= "#{@company.company_name}様の情報" %>
+        <li class="info-li"><%= "Email: #{@company.email}" %></li>
+        <li class="info-li"><%= "TEL: #{@company.phone_number}" %></li>
+        <li class="info-li">URL: <%= link_to "#{@company.office_url}", @company.office_url, class: "url" %></li>
+        <li class="info-li"><%= "担当者: #{@company.staff_lastname_kana} #{@company.staff_firstname_kana}" %></li>
+      </ul>
+      
+    <% elsif company_signed_in? %>
+      <%= image_tag @user.image, class: 'list-img' if @user.image.attached? %>
+      <ul class="side-list"><%= "#{@user.nickname}様の情報" %>
+        <li class="info-li"><%= "Email: #{@user.email}" %></li>
+        <li class="info-li"><%= "TEL: #{@user.phone_number}" %></li>
+    <% end %>
+  </div>
+  <div class="message-field">
+    <% if user_signed_in? && @room.user_id == current_user.id %>
+      <h3 class="from"><%= @company.company_name %>様からのメッセージ</h3>
+      <% if @company_messages.present? && @company.id == @room.company_id %>
+        <%= render partial: "messages/message", local: {messages: @company_messages}%>
+      <% end %>
+
+    <% elsif company_signed_in? && @room.company_id == current_company.id %>
+      <h3 class="from"><%= @user.nickname %>様からのメッセージ</h3>
+      <% if @messages.present? && @user.id == @room.user_id %>    
+        <%= render partial: "messages/message", local: {messages: @messages}%>
+      <% end %>
+    <% end %>
+
+    <% if user_signed_in? && @company_messages.blank? && @messages.blank? %>
+      <div class="message-index">
+        <div class="yet">メッセージが存在しません！今すぐ会話を始めましょう！</div>
+        <%= form_with model: [@room, @message], local: true do |f| %>
+          <%= f.text_area :content, placeholder: "1000文字まで入力できます", rows:"7" ,maxlength:"1000", class: "textarea" %><br>
+          <%= f.submit "メッセージを送る", class: "send-btn" %>
+        <% end %>
+      </div>
+    <% elsif user_signed_in? && @company_messages.blank? %>
+      <div class="message-index">
+        <div class="yet">新着メッセージはありません！返信があるまで待ちましょう！</div>
+        <%= link_to "トップページに戻る", root_path, class: "cancel" %>
+      </div>
+    <% elsif company_signed_in? && @messages.blank? && @company_messages.blank? %>
+      <div class="message-index">
+        <div class="yet">メッセージが存在しません！今すぐ会話を始めましょう！</div>
+        <%= form_with model: [@room, @company_message], local: true do |f| %>
+          <%= f.text_area :message, placeholder: "1000文字まで入力できます", rows:"7" ,maxlength:"1000", class: "textarea" %>
+          <%= f.submit "メッセージを送る", class: "send-btn" %>
+        <% end %>
+      </div>
+    <% elsif company_signed_in? && @messages.blank? %>
+      <div class="message-index">
+        <div class="yet">新着メッセージはありません！返信があるまで待ちましょう！</div>
+        <%= link_to "トップページに戻る", root_path, class: "cancel" %>
+      </div>
+    <% end %>
+
+    <div class="message-footer">
+      <div class="footer-name">presented by Sho.</div>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :companies, through: :user_relations, dependent: :destroy
   has_many :company_relations, foreign_key: "user_id"
   has_many :companies, through: :company_relations
+  has_many :rooms, dependent: :destroy, foreign_key: "user_id"
+  has_many :messages, dependent: :destroy, foreign_key: "user_id"
   
 
   with_options presence: true do

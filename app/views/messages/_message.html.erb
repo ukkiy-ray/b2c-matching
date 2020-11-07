@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+  <div class="message-index">
+    <p class="plese">最新のメッセージを押して返信してください。</p>
+    <% @company_messages.each do |m| %>
+      <div class="message-container">
+        <%= link_to m.message, "/rooms/#{@room.id}/company_messages/#{m.id}", class: "content" %>
+        <%= l m.created_at, class: "date" %>
+      </div>
+    <% end %>
+  </div>
+<% elsif company_signed_in? %>
+  <div class="message-index">
+    <p class="plese">最新のメッセージを押して返信してください。</p>
+    <% @messages.each do |m| %>
+      <div class="message-container">
+        <%= link_to m.content, "/rooms/#{@room.id}/messages/#{m.id}", class: "content" %>
+        <%= l m.created_at, class: "date" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

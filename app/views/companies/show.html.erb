@@ -65,17 +65,28 @@
             </div>
 
             <% if @user_relations.present? %>
-              <%= link_to 'フォローを外す', company_user_relation_path(@company.id), method: :delete, remote: true, class:'relation-destroy', id: "unfollow" %>
+              <%= link_to 'フォローを外す', company_user_relation_path(@company.id), method: :delete, remote: true, class:'unfollow-btn', id: "unfollow" %>
               <% if @company_relations.present? %>
-                <div class="match">マッチングしました！</div>
+                <div class="match">おめでとうございます。マッチングしました！</div>
                 <div class="arrow">↓↓↓↓↓↓↓↓</div>
+
+                <% if @company_ids.include?(@company.id) %>
+                  <br>
+                  <%= link_to "チャットへ", room_path(current_user.rooms.find_by(company_id: @company.id)) %><br>
+                <% else %>
+                  <%= form_for Room.new do |f| %>
+                    <%= f.hidden_field :company_id, :value => @company.id %>
+                    <%= f.submit %>
+                  <% end %>
+                <% end %>
+
               <% end %>
             <% else %>
               <%#= link_to 'フォローする', company_user_relations_path(@company.id), method: :post, remote: true, class:'relation' %>
               <%= form_with model: @user_relation, url: company_user_relations_path(@company.id), id: "form", local: true do |f| %>
                 <%= f.hidden_field :user_id, :value => current_user.id %>
                 <%= f.hidden_field :company_id, :value => @company.id %>
-                <%= f.submit "フォローする", id: "btn" %>
+                <%= f.submit "フォローする", id: "btn", class: "follow-btn" %>
               <% end %>
             <% end %>
 

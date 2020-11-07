@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_031541) do
+ActiveRecord::Schema.define(version: 2020_11_05_104202) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 2020_11_03_031541) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
+  create_table "company_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "message"
+    t.bigint "room_id"
+    t.bigint "company_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_messages_on_company_id"
+    t.index ["room_id"], name: "index_company_messages_on_room_id"
+  end
+
   create_table "company_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "company_id"
     t.bigint "user_id"
@@ -58,6 +68,25 @@ ActiveRecord::Schema.define(version: 2020_11_03_031541) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_company_relations_on_company_id"
     t.index ["user_id"], name: "index_company_relations_on_user_id"
+  end
+
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content"
+    t.bigint "room_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "company_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_rooms_on_company_id"
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "user_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -85,8 +114,14 @@ ActiveRecord::Schema.define(version: 2020_11_03_031541) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "company_messages", "companies"
+  add_foreign_key "company_messages", "rooms"
   add_foreign_key "company_relations", "companies"
   add_foreign_key "company_relations", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "rooms", "companies"
+  add_foreign_key "rooms", "users"
   add_foreign_key "user_relations", "companies"
   add_foreign_key "user_relations", "users"
 end

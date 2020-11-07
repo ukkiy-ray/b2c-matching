@@ -17,4 +17,9 @@ Rails.application.routes.draw do
   resources :companies, only: [:show] do
     resources :user_relations, only: [:create, :destroy]
   end
+
+  resources :rooms, only: [:show, :create, :destroy] do
+    resources :messages, only: [:show, :create, :destroy]
+    resources :company_messages, only: [:show, :create, :destroy]
+  end
 end

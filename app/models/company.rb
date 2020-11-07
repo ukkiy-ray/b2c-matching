@@ -9,6 +9,8 @@ class Company < ApplicationRecord
   has_many :users, through: :user_relations
   has_many :company_relations, foreign_key: "company_id", dependent: :destroy
   has_many :users, through: :company_relations, dependent: :destroy
+  has_many :rooms, dependent: :destroy, foreign_key: "company_id"
+  has_many :company_messages, dependent: :destroy, foreign_key: "company_id"
 
   with_options presence: true do
     validates :company_name

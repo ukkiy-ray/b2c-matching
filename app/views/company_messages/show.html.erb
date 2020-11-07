@@ -1,0 +1,48 @@
+<header class="message-header">
+  <div class="top-wrapper">
+    <div class="header-left">
+      <%= link_to 'Be ambitious', root_path, class: "header-logo" %>
+    </div>
+      <div class="header-right">
+        <ul class="nav">
+          <% if user_signed_in? %>
+            <li><%= link_to "こんにちは、#{current_user.nickname}さん", user_path(current_user.id), class: "hello" %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign-out" %></li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+</header>
+
+<div class="message-wrapper">
+  <div class="message-side">
+    <% if user_signed_in? %>
+      <%= image_tag @company.image, class: 'list-img' if @company.image.attached? %>
+      <ul class="side-list"><%= "#{@company.company_name}様の情報" %>
+        <li class="info-li"><%= "Email: #{@company.email}" %></li>
+        <li class="info-li"><%= "TEL: #{@company.phone_number}" %></li>
+        <li class="info-li">URL: <%= link_to "#{@company.office_url}", @company.office_url, class: "url" %></li>
+        <li class="info-li"><%= "担当者: #{@company.staff_lastname_kana} #{@company.staff_firstname_kana}" %></li>
+      </ul>
+    <% end %>
+  </div>
+  <div class="message-field">
+    <% if user_signed_in? && current_user.id == @room.user_id %>
+      <div class="message-index">
+        <h3 class="from"><%= @company.company_name %>様からのメッセージ</h3>
+        <div class="show-message"><%= @company_message.message %></div>
+        <%= form_with model: [@room, @message], local: true do |f| %>
+          <%= f.text_area :content, placeholder: "1000文字まで入力できます", rows:"7" ,maxlength:"1000", class: "textarea" %><br>
+            <%= f.submit "メッセージを送る", class: "send-btn" %>
+        <% end %>
+        <%= link_to "キャンセル", room_path(@room.id), class: "cancel" %>
+      </div>
+    <% end %>
+    <div class="message-footer">
+      <div class="footer-name">presented by Sho.</div>
+    </div>
+  </div>
+
+</div>
+
+
