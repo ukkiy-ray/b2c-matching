@@ -33,7 +33,7 @@
         <div class="show-message"><%= @company_message.message %></div>
         <%= form_with model: [@room, @message], local: true do |f| %>
           <%= f.text_area :content, placeholder: "1000文字まで入力できます", rows:"7" ,maxlength:"1000", class: "textarea" %><br>
-            <%= f.submit "メッセージを送る", class: "send-btn" %>
+            <%= f.submit "返信する", class: "send-btn" %>
         <% end %>
         <%= link_to "キャンセル", room_path(@room.id), class: "cancel" %>
       </div>

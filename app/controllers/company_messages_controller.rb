@@ -9,12 +9,16 @@ end
   def create
     @room = Room.find(params[:room_id])
     @company_message = @room.company_messages.new(company_message_params)
+    if company_signed_in?
       if @company_message.save
         redirect_to room_path(@room.id)
       else
         @company_messages = @room.message.includes(:company)
         render room_path(@room.id)
       end
+    else
+      redirect_to root_path
+    end
   end
 
   private

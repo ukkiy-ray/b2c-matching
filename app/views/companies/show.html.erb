@@ -67,12 +67,12 @@
             <% if @user_relations.present? %>
               <%= link_to 'フォローを外す', company_user_relation_path(@company.id), method: :delete, remote: true, class:'unfollow-btn', id: "unfollow" %>
               <% if @company_relations.present? %>
-                <div class="match">おめでとうございます。マッチングしました！</div>
-                <div class="arrow">↓↓↓↓↓↓↓↓</div>
+                <div class="match">Congratulations!</div>
+                <div class="arrow">マッチングしました！</div>
 
                 <% if @company_ids.include?(@company.id) %>
                   <br>
-                  <%= link_to "チャットへ", room_path(current_user.rooms.find_by(company_id: @company.id)) %><br>
+                  <%= link_to "チャットへ", room_path(current_user.rooms.find_by(company_id: @company.id)), class: "to-chat" %><br>
                 <% else %>
                   <%= form_for Room.new do |f| %>
                     <%= f.hidden_field :company_id, :value => @company.id %>

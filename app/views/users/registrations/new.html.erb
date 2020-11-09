@@ -1,19 +1,20 @@
-<div class="form-header">
+<header>
   <div class="top-wrapper">
     <div class="header-left">
       <%= link_to 'Be ambitious', root_path, class: "header-logo" %>
     </div>
       <div class="header-right">
         <ul class="nav">
-          <li><%= link_to 'ユーザーログイン', new_user_session_path, class: "sign-in" %></li>
-          <li><%= link_to '法人の方ログイン', new_company_session_path, class: "sign-up" %></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-          <li><%= link_to '法人の方はこちら', new_company_registration_path, class: "company-sign-up" %></li>
+          
+            <li><%= link_to 'ユーザー  ログイン', new_user_session_path, class: "sign-in" %></li>
+            <li><%= link_to '法人の方  ログイン', new_company_session_path, class: "sign-up" %></li>
+            <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+            <li><%= link_to '法人の方はこちら', new_company_registration_path, class: "company-sign-up" %></li>
+          
         </ul>
       </div>
-    </div>
   </div>
-</div>
+</header>
 
 <div class="main" style="background-image:url(/images/Live.png)">
   <div class="inner">

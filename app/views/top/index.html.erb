@@ -12,8 +12,8 @@
             <li><%= link_to "こんにちは、#{current_company.company_name}様", company_path(current_company.id), class: "hello" %></li>
             <li><%= link_to 'ログアウト', destroy_company_session_path, method: :delete, class: "sign-out" %></li>
           <% else %>
-            <li><%= link_to 'ユーザーログイン', new_user_session_path, class: "sign-in" %></li>
-            <li><%= link_to '法人の方ログイン', new_company_session_path, class: "sign-up" %></li>
+            <li><%= link_to 'ユーザー  ログイン', new_user_session_path, class: "sign-in" %></li>
+            <li><%= link_to '法人の方  ログイン', new_company_session_path, class: "sign-up" %></li>
             <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
             <li><%= link_to '法人の方はこちら', new_company_registration_path, class: "company-sign-up" %></li>
           <% end %>
@@ -31,9 +31,17 @@
               <div class="index-content">
                 <%= link_to image_tag(company.image, class: 'image'), company_path(company.id) if company.image.attached? %>
                 <%= link_to company.company_name, company_path(company.id), class: "user-info" %>
-                <div class="follow-link">
-                  <%= link_to 'フォローする', "#", class: "follow" %>
-                </div>
+
+                <% if company.user_relations.find_by(user_id: current_user.id).present? %>
+                  <% if company.company_relations.find_by(user_id: current_user.id).present? %>
+                    <div class="matching-status">マッチングしています!!</div>
+                  <% else %>
+                    <div class="follow-status">フォローしています!</div>
+                  <% end %>
+                <% elsif company.company_relations.find_by(user_id: current_user.id).present? %>
+                  <div class="follow-status">フォローされています!</div>
+                <% end %>
+
               </div>
             <% end %>
           </div>
@@ -46,9 +54,17 @@
               <div class="index-content">
                 <%= link_to image_tag(user.image, class: 'image'), user_path(user.id) if user.image.attached? %>
                 <%= link_to user.nickname, user_path(user.id), class: "user-info" %>
-                <div class="follow-link">
-                  <%= link_to 'フォローする', "#", class: "follow" %>
-                </div>
+
+                <% if user.company_relations.find_by(company_id: current_company.id).present? %>
+                  <% if user.user_relations.find_by(company_id: current_company.id).present? %>
+                    <div class="matching-status">マッチングしています!!</div>
+                  <% else %>
+                    <div class="follow-status">フォローしています！</div>
+                  <% end %>
+                <% elsif user.user_relations.find_by(company_id: current_company.id).present? %>
+                  <div class="follow-status">フォローされています!</div>
+                <% end %>
+
               </div>
             <% end %>
       <% else %>

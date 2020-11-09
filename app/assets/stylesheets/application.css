@@ -78,7 +78,7 @@ header {
 
 .nav {
   display: flex;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .sign-in {
@@ -89,7 +89,7 @@ header {
 .sign-up {
   text-decoration: none;
   color: lightgray;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 
 .sign-out {
@@ -106,7 +106,7 @@ header {
 .company-sign-up {
   text-decoration: none;
   color: lightgray;
-  margin-left: 20px;
+  margin-left: 5px;
 }
 
 /* ここまでヘッダー================== */
@@ -196,18 +196,20 @@ header {
   height: 70%;
 }
 
-.follow-link {
-  margin: 10px auto;
+.matching-status {
+  background-color: crimson;
   border-radius: 15px;
-  background-color: rgba(0, 51, 102, 0.8);
-  width: 50%;
+  margin: 2px auto;
+  width: 80%;
+  color: aliceblue;
 }
 
-.follow {
-  text-decoration: none;
+.follow-status {
+  border-radius: 15px;
+  margin: 2px auto;
+  width: 80%;
+  background-color: rgba(0, 51, 102, 0.8);
   color: aliceblue;
-  display: inline-block;
-  width: 100%;
 }
 
 /* ここまでトップページのコンテンツ =========*/
@@ -341,11 +343,12 @@ header {
   display: flex;
   justify-content: center;
   position: relative;
+  overflow: auto;
 }
 
 .logged-in-main::before {
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -567,13 +570,15 @@ header {
 }
 
 .match {
-  font-size: 25px;
-  color: red;
+  font-size: 40px;
+  font-family: 'Abril Fatface', cursive;
+  color: black;
 }
 
 .arrow {
   font-size: 18px;
   color: red;
+  font-weight: bold;
 }
 
 .follow-btn {
@@ -599,6 +604,19 @@ header {
   border-radius: 10px;
   padding: 0 2px;
   margin: 30px;
+}
+
+.to-chat {
+  text-decoration: none;
+  display: inline-block;
+  background-color: #75A9FF;
+  color: white;
+  border: none;
+  line-height: 32px;
+  height: 40px;
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 10px;
 }
 
 /* ========== message ===================*/
