@@ -33,18 +33,22 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
         </div>
 
-        <div class="field">
-          <%= f.label "パスワード" %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: 'input' %>
-        </div>
+        <%if @sns_id.present? %>
+          <%= hidden_field_tag :sns_auth, true %>
+        <% else %>
+          <div class="field">
+            <%= f.label "パスワード" %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: 'input' %>
+          </div>
 
-        <div class="field">
-          <%= f.label "パスワード確認" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
-        </div>
+          <div class="field">
+            <%= f.label "パスワード確認" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
+          </div>
+        <% end %>
 
         <div class="field">
           <%= f.label "電話番号" %><br />
@@ -69,6 +73,10 @@
           <%= f.submit "Sign up", class: "send" %>
         </div>
       <% end %>
+      <div class="sns-logged-in">
+        <%= link_to "facebookで登録する", user_facebook_omniauth_authorize_path, method: :post, class: "facebook-btn" %>
+        <%= link_to image_tag("/images/btn_google_signin_dark_focus_web.png", art: "googleで登録"), user_google_oauth2_omniauth_authorize_path, method: :post, class: "google-btn" %>
+      </div>
     </div>
   </div>
 </div>

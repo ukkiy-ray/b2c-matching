@@ -246,11 +246,12 @@ header {
   display: flex;
   justify-content: center;
   position: relative;
+  overflow: auto;
 }
 
 .main::before {
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -388,14 +389,20 @@ header {
   padding-top: 15px;
 }
 
-.btn {
+.google-btn {
+  margin: 30px;
+}
+
+.facebook-btn {
   display: inline-block;
   text-decoration: none;
-  color: black;
-  border: 1px solid black;
-  height: 40px;
+  background-color: #3366ff;
+  color: white;
+  border: none;
+  line-height: 44px;
+  height: 44px;
   border-radius: 10px;
-  padding: 4px;
+  padding: 0 4px;
   margin: 30px;
 }
 

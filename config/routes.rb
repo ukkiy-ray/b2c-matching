@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     registrations: 'companies/registrations'
   }
   devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
     sessions:      'users/sessions',
     passwords:     'users/passwords',
     registrations: 'users/registrations'
