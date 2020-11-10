@@ -12,6 +12,29 @@
   </head>
 
   <body>
+    <header>
+      <div class="top-wrapper">
+        <div class="header-left">
+          <%= link_to 'Be ambitious', root_path, class: "header-logo" %>
+        </div>
+          <div class="header-right">
+            <ul class="nav">
+              <% if user_signed_in? %>
+                <li><%= link_to "こんにちは、#{current_user.nickname}さん", user_path(current_user.id), class: "hello" %></li>
+                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign-out" %></li>
+              <% elsif company_signed_in? %>
+                <li><%= link_to "こんにちは、#{current_company.company_name}様", company_path(current_company.id), class: "hello" %></li>
+                <li><%= link_to 'ログアウト', destroy_company_session_path, method: :delete, class: "sign-out" %></li>
+              <% else %>
+                <li><%= link_to 'ユーザー  ログイン', new_user_session_path, class: "sign-in" %></li>
+                <li><%= link_to '法人の方  ログイン', new_company_session_path, class: "sign-up" %></li>
+                <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+                <li><%= link_to '法人の方はこちら', new_company_registration_path, class: "company-sign-up" %></li>
+              <% end %>
+            </ul>
+          </div>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>

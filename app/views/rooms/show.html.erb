@@ -64,7 +64,7 @@
       </div>
     <% elsif user_signed_in? && @company_messages.blank? %>
       <div class="message-index">
-        <div class="yet">新着メッセージはありません！返信があるまで待ちましょう！</div>
+        <div class="yet">既にメッセージを送信済みです。新着メッセージはありません！返信があるまで待ちましょう！</div>
         <%= link_to "トップページに戻る", root_path, class: "cancel" %>
       </div>
     <% elsif company_signed_in? && @messages.blank? && @company_messages.blank? %>
@@ -77,7 +77,7 @@
       </div>
     <% elsif company_signed_in? && @messages.blank? %>
       <div class="message-index">
-        <div class="yet">新着メッセージはありません！返信があるまで待ちましょう！</div>
+        <div class="yet">既にメッセージを送信済みです。新着メッセージはありません！返信があるまで待ちましょう！</div>
         <%= link_to "トップページに戻る", root_path, class: "cancel" %>
       </div>
     <% end %>

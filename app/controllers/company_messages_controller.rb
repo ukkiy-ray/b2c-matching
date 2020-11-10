@@ -13,8 +13,7 @@ end
       if @company_message.save
         redirect_to room_path(@room.id)
       else
-        @company_messages = @room.message.includes(:company)
-        render room_path(@room.id)
+        redirect_to room_path(@room.id)
       end
     else
       redirect_to root_path

@@ -1,24 +1,7 @@
-<header>
-  <div class="top-wrapper">
-    <div class="header-left">
-      <%= link_to 'Be ambitious', root_path, class: "header-logo" %>
-    </div>
-    <div class="header-right">
-      <ul class="nav">
-        <% if user_signed_in? && current_user.id == @user.id %>
-          <li><%= link_to "こんにちは、#{current_user.nickname}さん", user_path(current_user.id), class: "hello" %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign-out" %></li>
-        <% elsif company_signed_in? %>
-          <li><%= link_to "こんにちは、#{current_company.company_name}様", company_path(current_company.id), class: "hello" %></li>
-          <li><%= link_to 'ログアウト', destroy_company_session_path, method: :delete, class: "sign-out" %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</header>
 <div style="background-image:url(/images/guitar.png)" class="detail-contents">
   <div class="context">
     <% if user_signed_in? && current_user.id == @user.id %>
+    <%# ================================== マイページ部分 ======================================= %>
       <div class="detail-container">
         <h1 class="cp_h1title"><%= "#{current_user.nickname}さんのページ" %></h1>
         <div class="information-wrapper">
@@ -39,7 +22,9 @@
           </div>
         </div>
       <div>
+    <%# ================================== マイページ部分 ======================================= %>
     <% elsif company_signed_in? %>
+    <%# ================================== ユーザー詳細ページ =================================== %>
       <div class="detail-container">
         <h1 class="cp_h1title"><%= "#{@user.nickname}さんのプロフィール" %></h1>
         <div class="information-wrapper">
@@ -56,33 +41,32 @@
             <div class="profile-text">
               <%= @user.detail %>
             </div>
-
+            <%# ======= フォローをするもしくは外す機能の実装。相互フォローになるとマッチング成功の表示 ======== %>
             <% if @company_relations.present? %>
               <%= link_to 'フォローを外す', user_company_relation_path(@user.id), method: :delete, remote: true, class:'unfollow-btn', id: "unfollow" %>
               <% if @user_relations.present? %>
                 <div class="match">Congratulations!</div>
                 <div class="arrow">マッチングしました！</div>
-
+            <%# ======= マッチング成功後、チャットへ。部屋がない場合は部屋を作成 ======== %>
                     <% if @user_ids.include?(@user.id) %>
                       <br>
                       <%= link_to "チャットへ", room_path(current_company.rooms.find_by(user_id: @user.id)), class: "to-chat" %><br>
                     <% else %>
                       <%= form_for Room.new do |f| %>
                         <%= f.hidden_field :user_id, :value => @user.id %>
-                        <%= f.submit %>
+                        <%= f.submit "チャットを開始する", class: "to-chat" %>
                       <% end %>
                     <% end %>
-
+            <%# ======= マッチング成功後、チャットへ。部屋がない場合は部屋を作成 ======== %>
               <% end %>
             <% else %>
-              <%#= link_to 'フォローする', user_company_relations_path(@user.id), method: :post, remote: true, class:'relation' %>
               <%= form_with model: @company_relation, url: user_company_relations_path(@user.id), id: "form", local: true do |f| %>
                 <%= f.hidden_field :user_id, :value => @user.id %>
                 <%= f.hidden_field :company_id, :value => current_company.id %>
                 <%= f.submit "フォローする", id: "btn", class: "follow-btn" %>
               <% end %>
             <% end %>
-
+          <%# ======= フォローをするもしくは外す機能の実装。相互フォローになるとマッチング成功の表示 ======== %>
             
           </div>
         </div>
