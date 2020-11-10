@@ -25,6 +25,8 @@ header {
   height: 90px;
   width: 100%;
   position: fixed;
+  top: 0px;
+  left: 0px;
   z-index: 10;
 }
 
@@ -33,6 +35,8 @@ header {
   height: 90px;
   width: 100%;
   position: fixed;
+  top: 0px;
+  left: 0px;
   z-index: 10;
 }
 
@@ -46,6 +50,7 @@ header {
 
 .top-wrapper {
   text-align: center;
+  height: 90px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -79,6 +84,7 @@ header {
 .nav {
   display: flex;
   font-size: 22px;
+  list-style: none;
 }
 
 .sign-in {
@@ -119,7 +125,9 @@ header {
   text-align: center;
   display: flex;
   justify-content: center;
-  position: relative;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 .contents-wrapper::before {
