@@ -15,9 +15,7 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
         </div>
 
-        <% if @sns_id.present? %>
           <%= hidden_field_tag :sns_auth, true %>
-        <% else %>
           <div class="field">
             <%= f.label "パスワード" %>
             <% if @minimum_password_length %>
@@ -30,7 +28,6 @@
             <%= f.label "パスワード確認" %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
           </div>
-        <% end %>
 
         <div class="field">
           <%= f.label "電話番号" %><br />
@@ -65,5 +62,3 @@
 <div class="form-footer">
   <div class="my-name">development by Sho.</div>
 </div>
-
-<%#= render "users/shared/links" %>
