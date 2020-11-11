@@ -251,7 +251,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: calc(100% - 90px);
+  height: 100%;
   text-align: center;
   display: flex;
   justify-content: center;
