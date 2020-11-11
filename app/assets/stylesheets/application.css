@@ -280,6 +280,26 @@ header {
   border: none;
 }
 
+.user-inner {
+  width: 100%;
+  height: 1000px;
+  margin: 0 auto;
+  padding: 25px 0 75px 0;
+  display: flex;
+  justify-content: center;
+  border: none;
+}
+
+.company-inner {
+  width: 100%;
+  height: 1100px;
+  margin: 0 auto;
+  padding: 25px 0 75px 0;
+  display: flex;
+  justify-content: center;
+  border: none;
+}
+
 .form__wrapper {
   min-height: calc(100vh - 161vh);
   height: 101%;
