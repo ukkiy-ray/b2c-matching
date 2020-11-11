@@ -15,7 +15,7 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
         </div>
 
-        <%if @sns_id.present? %>
+        <% if @sns_id.present? %>
           <%= hidden_field_tag :sns_auth, true %>
         <% else %>
           <div class="field">
