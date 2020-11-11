@@ -102,11 +102,13 @@ header {
   text-decoration: none;
   color: lightgray;
   margin-left: 20px;
+  font-size: 18px;
 }
 
 .hello {
   text-decoration: none;
   color: lightgray;
+  font-size: 18px;
 }
 
 .company-sign-up {
@@ -231,6 +233,7 @@ header {
   width: 100%;
   position: fixed;
   bottom: 0px;
+  left: 0px;
   z-index: 10;
 }
 
@@ -253,7 +256,9 @@ header {
   text-align: center;
   display: flex;
   justify-content: center;
-  position: relative;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   overflow: auto;
 }
 
@@ -351,7 +356,9 @@ header {
   text-align: center;
   display: flex;
   justify-content: center;
-  position: relative;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   overflow: auto;
 }
 
@@ -420,6 +427,7 @@ header {
   width: 100%;
   position: fixed;
   bottom: 0px;
+  left: 0px;
   z-index: 10;
 }
 
@@ -447,6 +455,9 @@ header {
   background-size: cover;
   width: 100%;
   height: 100vh;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   text-align: center;
 }
 
@@ -478,7 +489,9 @@ header {
   text-align: center;
   display: flex;
   justify-content: center;
-  position: relative;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 .detail-contents::before {
