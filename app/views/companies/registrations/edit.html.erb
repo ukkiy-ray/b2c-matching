@@ -1,18 +1,4 @@
-<header>
-  <div class="top-wrapper">
-    <div class="header-left">
-      <%= link_to 'Be ambitious', root_path, class: "header-logo" %>
-    </div>
-    <div class="header-right">
-      <ul class="nav">
-        <li><%= link_to "こんにちは、#{current_company.company_name}さん", company_path(current_company.id), class: "hello" %></li>
-        <li><%= link_to 'ログアウト', destroy_company_session_path, method: :delete, class: "sign-out" %></li>  
-      </ul>
-    </div>
-  </div>
-</header>
-
-<div class="main" style="background-image:url(/images/Live.png)">
+<div class="edit-main" style="background-image:url(/images/Live.png)">
   <div class="inner">
     <div class="form__wrapper">
       <h2 class="page-heading">Edit</h2>
@@ -34,21 +20,17 @@
         <% end %>
 
         <div class="field">
-          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.label "パスワード" %><br />
           <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
-          <% if @minimum_password_length %>
-            <br />
-            <em><%= @minimum_password_length %> characters minimum</em>
-          <% end %>
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label "パスワード（確認）" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
         </div>
 
         <div class="field">
-          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.label "現在のパスワード" %><br />
           <%= f.password_field :current_password, autocomplete: "current-password", class: "input" %>
         </div>
 
