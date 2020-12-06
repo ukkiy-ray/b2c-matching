@@ -31,7 +31,7 @@ amazon EC2上のアプリケーションにもfacebook認証ボタンがあり�
 スムーズな動作確認のためにherokuを推奨とさせていただいております。
 
 ## heroku URL
-- [heroku](https://b2c-matching.herokuapp.com/)
+- [heroku: https://b2c-matching.herokuapp.com/](https://b2c-matching.herokuapp.com/)
 - **推奨環境** : Google Chrome
 
 ### ユーザーログイン（テスト用アカウント）
@@ -44,7 +44,7 @@ amazon EC2上のアプリケーションにもfacebook認証ボタンがあり�
 
 
 ## amazon EC2 URL
-- [amazonEC2](http://ec2-54-168-221-242.ap-northeast-1.compute.amazonaws.com/)
+- [amazonEC2: http://ec2-54-168-221-242.ap-northeast-1.compute.amazonaws.com/](http://ec2-54-168-221-242.ap-northeast-1.compute.amazonaws.com/)
 
 ### ユーザーログイン（テスト用アカウント）
 * Email: test@gmail.com
