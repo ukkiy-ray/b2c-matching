@@ -346,3 +346,38 @@ amazon EC2上のアプリケーションにもfacebook認証ボタンがあり�
 ### Association
 
 - belongs_to :user, optional: true
+
+<br>
+
+# ローカルでの動作方法
+
+## 開発環境とバージョンについて
+
+| 開発環境 | 詳細 |
+|-|-|
+|開発言語|HTML5 / CSS3 / Ruby|
+| FW | Ruby on Rails|
+| RDB | MySQL |
+|バージョン管理|Git / Github |
+|デプロイ| Heroku / amazon EC2 |
+|Editor|VScode|
+|API|Google auth / Facebook auth|
+|OS|MacOS BigSur|
+|画像管理|amazon S3|
+
+<br>
+
+- Ruby : 2.6.5
+- Ruby on Rails : 6.0.0
+- webpacker : 4.0
+- node : v14.16.0
+- yarn : 1.22.5
+
+```ターミナル
+% git clone https://github.com/ukkiy-ray/b2c-matching.git
+% cd b2c-matching
+% bundle install
+% yarn install
+% rails db:create
+% rails db:migrate
+```
